@@ -1,0 +1,769 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+/* General */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+  
+  /* Navbar */
+  .navbar {
+    background: #e8eaed;
+    padding: 8px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px; /* Reduce height */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  
+  .navbar-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    margin-right: 15px;
+    font-family: 'Orbitron', sans-serif; /* Robotic font */
+    font-size: 1.8rem; /* Slightly larger */
+    font-weight: bold;
+    color: #ff8c00; /* Orange metallic */
+    text-shadow: 2px 2px 4px rgba(255, 140, 0, 0.5); /* Metallic effect */
+    margin-left: 10px; /* Move right */
+}
+
+  
+  
+  .portfolio-title {
+    margin-right: 15px;
+    font-weight: bold;
+  }
+  
+  .navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+    margin-right: 20px; 
+}
+
+  
+  .share-btn {
+    background-color: #d9ecff; /* Light sky blue */
+    color: #0077cc; /* Text color */
+    border: none;
+    border-radius: 20px;
+    padding: 8px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+  }
+  
+  .share-btn:hover {
+    background-color: #c7e1ff; /* Slightly darker blue on hover */
+  }
+  
+ /* Sidebar*/
+.sidebar {
+    position: fixed;
+    left: -220px;
+    top: 50px; /* Make sure it does not overlap with navbar */
+    width: 220px;
+    height: calc(100vh - 50px);
+    background: white;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    transition: left 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .sidebar.open {
+    left: 0;
+  }
+  
+ /* Ensure content is visible and not hidden by sidebar */
+.content {
+    margin-left: 0;
+    padding: 20px;
+    transition: margin-left 0.3s;
+  }
+  
+  .sidebar.open + .content {
+    margin-left: 220px; /* Move content when sidebar is open */
+  }
+  
+  
+  
+  /* Sidebar Links */
+  .sidebar-links a {
+    display: block; 
+    padding: 10px 15px; 
+    text-decoration: none; 
+    color: black; 
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px; 
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .sidebar-links a:hover {
+    background: #f1f1f1;
+  }
+
+  /* Tooltip */
+.tooltip {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    z-index: 999;
+    pointer-events: none; /* Prevents interfering with mouse events */
+    transition: opacity 0.2s ease-in-out;
+  }
+  
+  /* Sidebar Icons */
+  .sidebar-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .sidebar-icons a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    text-decoration: none;
+    color: black;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+
+  .sidebar-icons a:hover {
+    color: orange;
+  }
+
+
+  
+/* Notebook-style cells (About Me, Experience, Projects) */
+.notebook-cell {
+    background: white;
+    padding: 15px;
+    margin: 15px auto;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 900px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif; /* Robotic font */
+}
+  
+  /* Hover effect - Show Play Button */
+  .notebook-cell:hover .cell-header span {
+    color: orange;
+  }
+
+  .notebook-cell:hover {
+    box-shadow: 0px 0px 20px rgba(255, 174, 0, 0.897); 
+  }
+
+  .notebook-cell .cell-header {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.2rem;
+    transition: color 0.2s ease-in-out;
+}
+/* Change title color to orange on hover */
+.notebook-cell .cell-header:hover {
+    color: orange;
+}
+ /* Border Animation */
+ @keyframes neon-border {
+    0% { border-color: #4caf50; }
+    50% { border-color: #00e5ff; }
+    100% { border-color: #4caf50; }
+}
+.notebook-cell.expanded {
+    animation: neon-border 2s infinite alternate;
+}
+
+/* Close Button (˄) Styling */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: white;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.close-btn:hover {
+    background: orange;
+    border-color: orange;
+    color: white;
+}
+
+  /* Push Content Down to Avoid Overlapping Navbar */
+  .content {
+    margin-top: 60px; /* Fix overlap issue */
+    margin-left: 0;
+    padding: 20px;
+    transition: margin-left 0.3s;
+  }
+  
+  .sidebar.open + .content {
+    margin-left: 220px; /* Ensure content moves correctly when sidebar opens */
+  }
+  
+/* Profile Dropdown */
+.profile {
+    display: flex;
+    position: relative;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .profile-dropdown {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background: white;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    width: 180px;
+    padding: 10px;
+    z-index: 1000;
+  }
+  
+  .profile-dropdown a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    text-decoration: none;
+    color: black;
+  }
+  
+  .profile-dropdown a:hover {
+    background: #f1f1f1;
+  }
+  
+  /* Sidebar Icons */
+.sidebar-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .sidebar-icons a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    text-decoration: none;
+    color: black;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+  
+  .sidebar-links a:hover,
+.sidebar-icons a:hover {
+    color: orange;
+}
+  
+  /* Ensure sidebar text fits inside */
+  .sidebar-text {
+    max-width: 130px; /* Adjust to fit inside sidebar */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap;
+  }
+  
+  /* Tooltip */
+.tooltip {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    z-index: 999;
+    pointer-events: none; /* Prevents interfering with mouse events */
+    transform: translate(-50%, -50%);
+  }
+
+  /* Profile Picture */
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid #ccc;
+    transition: border-color 0.2s ease-in-out;
+  }
+  
+  .profile-pic:hover {
+    border-color: orange;
+  }
+
+
+
+/* Introduction Section Layout */
+.intro-container {
+    display: flex;
+    align-items: flex-start; /* Align text and image */
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2); /* Separator between sections */
+}
+
+/* Left Side - Text */
+.intro-text {
+    flex: 1;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: white;
+}
+
+/* Right Side - Image (Bigger & Properly Positioned) */
+.intro-image {
+    width: auto;  /* Use auto to maintain aspect ratio */
+    max-width: 275px; /* Prevent image from getting too big */
+    height: auto;  /* Maintain aspect ratio */
+    max-height: 275px;
+    border-radius: 10px; /* Square with rounded edges */
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Image should not be stretched */
+.intro-image img {
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    object-fit: contain; /* Ensures full image is displayed without distortion */
+    border: 3px solid #4caf50; /* Neon border for image */
+    box-shadow: 0px 0px 10px rgba(76, 175, 80, 0.8);
+    transition: transform 0.3s ease-in-out;
+}
+/* Full width text after the first paragraph */
+.full-width-text {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: white;
+    width: 100%;
+}
+
+/* Hover Effect */
+.intro-image img:hover {
+    transform: scale(1.1);
+    border-color: #00e5ff;
+}
+
+/* General Education Section */
+.edu-section {
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Text Content Box */
+.edu-info {
+    background: rgba(0, 0, 0, 0.7); /* Dark overlay for readability */
+    padding: 15px;
+    border-radius: 10px;
+    max-width: 60%;
+}
+
+/* Background Images */
+.binghamton-bg {
+    background-image: url('/public/binghamton.png'); /* Update this with your image */
+}
+
+.vit-bg {
+    background-image: url('/public/vit.jpg'); /* Update this with your image */
+}
+
+/* List Styling */
+.edu-info ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.edu-info li::before {
+    content: "⦿"; /* Bullet point */
+    color: #4caf50;
+    margin-right: 8px;
+}
+
+
+/* Unique Experience Cell - Adds a futuristic grid effect */
+.experience-cell.expanded {
+    background: linear-gradient(135deg, #0f0f0f 0%, #1c1c1c 100%);
+    border: 2px solid #00e5ff;
+    box-shadow: 0px 0px 15px rgba(0, 229, 255, 0.8);
+    animation: glowEffect 1.5s infinite alternate;
+}
+
+/* Grid-like Background for a Futuristic Look */
+@keyframes glowEffect {
+    0% { box-shadow: 0px 0px 10px rgba(0, 229, 255, 0.6); }
+    100% { box-shadow: 0px 0px 20px rgba(0, 229, 255, 1); }
+}
+
+/* Experience Sections - RA & Testing */
+.experience-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.ra-bg {
+    background: rgba(255, 187, 0, 0.699);
+    border-left: 5px solid #00e5ff;
+    border-bottom: 5px solid #00e5ff;
+}
+
+.testing-bg {
+    background: rgba(255, 187, 0, 0.699);
+    border-left: 5px solid #00e5ff;
+    border-bottom: 5px solid #00e5ff;
+}
+
+/* General Experience Icons */
+.experience-icon {
+    font-size: 2rem;
+    padding: 12px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    box-shadow: 0px 0px 8px rgba(255, 255, 255, 0.2);
+}
+
+/* Research Assistant Icon - Cyan */
+.ra-icon {
+    background: rgba(0, 229, 255, 0);
+    color: #00e5ff;
+    border: 2px solid #00e5ff;
+}
+
+/* Testing (QA/Selenium) Icon - Orange */
+.testing-icon {
+    background: rgba(0, 229, 255, 0.007);
+    color: #00e5ff;
+    border: 2px solid #00e5ff;
+}
+
+/* Hover effect to make icons interactive */
+.experience-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 12px rgba(255, 255, 255, 0.4);
+}
+
+/* Experience Info Styling */
+.experience-info {
+    color: white;
+    max-width: 75%;
+}
+
+.experience-info ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.experience-info li::before {
+    content: "⦿"; 
+    color: #00e5ff;
+    margin-right: 8px;
+}
+
+/* Unique Projects Cell */
+.projects-cell.expanded {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1c1c1c 100%);
+    border: 2px solid #ffcc00; /* Yellow Glow */
+    box-shadow: 0px 0px 15px rgba(255, 204, 0, 0.8);
+    animation: projectGlow 1.5s infinite alternate;
+}
+
+/* Glowing Effect */
+@keyframes projectGlow {
+    0% { box-shadow: 0px 0px 10px rgba(255, 204, 0, 0.6); }
+    100% { box-shadow: 0px 0px 20px rgba(255, 204, 0, 1); }
+}
+
+/* Project Card Layout */
+.project-card {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    background: rgba(255, 204, 0, 0.2); /* Semi-transparent yellow */
+    border-left: 5px solid #ffcc00; /* Yellow left border */
+}
+
+/* Project Icons */
+.project-icon {
+    font-size: 2rem;
+    color: #ffcc00;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    box-shadow: 0px 0px 8px rgba(255, 255, 255, 0.2);
+}
+
+/* Project Info */
+.project-info {
+    color: white;
+    max-width: 75%;
+}
+
+.project-info ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.project-info li::before {
+    content: "⦿"; /* Bullet point */
+    color: #ffcc00;
+    margin-right: 8px;
+}
+
+/* GitHub Icon beside Project Name */
+.github-icon {
+    color: #ffffff;
+    margin-left: 10px;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.github-icon:hover {
+    color: #ffcc00;
+    transform: scale(1.2);
+}
+
+/* Unique Skills Cell */
+.skills-cell.expanded {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1c1c1c 100%);
+    border: 2px solid #4caf50; /* Green Glow */
+    box-shadow: 0px 0px 15px rgba(76, 175, 80, 0.8);
+    animation: skillGlow 1.5s infinite alternate;
+}
+
+/* Glowing Effect */
+@keyframes skillGlow {
+    0% { box-shadow: 0px 0px 10px rgba(76, 175, 80, 0.6); }
+    100% { box-shadow: 0px 0px 20px rgba(76, 175, 80, 1); }
+}
+
+/* Skill Card */
+.skill-card {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background: rgba(76, 175, 80, 0.2); /* Semi-transparent green */
+    border-left: 5px solid #4caf50;
+}
+
+/* Skill Icons */
+.skill-icon {
+    font-size: 2rem;
+    color: #4caf50;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    box-shadow: 0px 0px 8px rgba(255, 255, 255, 0.2);
+}
+
+/* Skill Info */
+.skill-info {
+    color: white;
+    width: 100%;
+}
+
+/* Progress Bar */
+.skill-bar {
+    width: 100%;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    margin-top: 5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: #4caf50; /* Progress color */
+    transition: width 0.5s ease-in-out;
+}
+
+/* Hover Effect */
+.skill-icon:hover {
+    transform: scale(1.1);
+    color: #00e5ff;
+}
+
+/* Certifications Section */
+#certifications .cell-content h2 {
+    color: white;
+    text-align: center;
+    font-size: 1.5rem;
+    opacity: 0.8;
+}
+
+/* Expanded Cell Effect - Gray Background */
+.notebook-cell.expanded {
+    background: black;
+    border: 2px solid #4caf50; /* Neon Green Border */
+    box-shadow: 0px 0px 10px rgba(76, 175, 80, 0.8); /* Glow Effect */
+    padding: 20px;
+    transform: scale(1.02);
+    transition: all 0.3s ease-in-out;
+    border-radius: 10px; /* Smooth Edges */
+    position: relative;
+    cursor: grab;
+}
+
+.sidebar a:hover {
+    background: rgba(255, 140, 0, 0.8); /* Cyber orange */
+    color: #ffffff;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(-10px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .cell-content {
+    animation: slideIn 0.5s ease-in-out;
+  }
+  
+  button {
+    transition: all 0.3s ease;
+  }
+  
+  button:hover {
+    transform: scale(1.1);
+  }
+
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(10px); }
+    100% { transform: translateY(0px); }
+  }
+  
+  .background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+  }
+  
+  .gear {
+    position: absolute;
+    opacity: 0.15; 
+    animation: float 8s ease-in-out infinite;
+  }
+  
+  .gear.small {
+    width: 80px;
+    height: 80px;
+    animation-duration: 25s;
+  }
+
+  .gear.medium {
+    width: 100px;
+    height: 100px;
+  }
+
+  .gear.large {
+    width: 150px;
+    height: 150px;
+    animation-duration: 15s;
+  }
+  
