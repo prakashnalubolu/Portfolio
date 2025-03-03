@@ -2,12 +2,12 @@
 A visually appealing and interactive portfolio built with React.js, inspired from Google colab style.
 
 📌 Features
-✅ Interactive Theme - Notebook-style layout with collapsible sections
-✅ Sidebar Navigation - Clickable sidebar that smoothly scrolls to sections
-✅ Dynamic Cells - Expand, collapse, and rearrange sections dynamically
-✅ Floating Cubes & Particles - Subtle animated background effects
-✅ Responsive Design - Optimized for desktop, tablet, and mobile
-✅ Dark & Light Mode Toggle (optional, if implemented)
+✅ Interactive Theme - Notebook-style layout with collapsible sections  
+✅ Sidebar Navigation - Clickable sidebar that smoothly scrolls to sections  
+✅ Dynamic Cells - Expand, collapse, and rearrange sections dynamically  
+✅ Floating Cubes & Particles - Subtle animated background effects  
+✅ Responsive Design - Optimized for desktop, tablet, and mobile  
+✅ Dark & Light Mode Toggle (optional, if implemented)  
 
 🛠 Tech Stack
 Frontend: React.js, React Router
