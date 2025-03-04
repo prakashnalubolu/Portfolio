@@ -11,7 +11,7 @@ function Projects({ isActive }) {
 
   return (
     <Draggable>
-    <div id="projects" className={`notebook-cell projects-cell ${expanded ? 'expanded' : ''}`} onClick={() => setExpanded(!expanded)}>
+    <div id="projects" className={`notebook-cell projects-cell ${expanded ? 'expanded' : ''}`} onClick={() => setExpanded(!expanded)} >
       <div className="cell-header">
         <span>[ {expanded ? " " : "▶"} ]</span> Projects
       </div>

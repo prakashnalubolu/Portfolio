@@ -11,7 +11,7 @@ function Experience({ isActive }) {
 
   return (
     <Draggable>
-    <div id="experience" className={`notebook-cell experience-cell ${expanded ? 'expanded' : ''}`} onClick={() => setExpanded(!expanded)}>
+    <div id="experience" className={`notebook-cell experience-cell ${expanded ? 'expanded' : ''}`} onClick={() => setExpanded(!expanded)} >
       <div className="cell-header">
         <span>[ {expanded ? " " : "▶"} ]</span> Experience
       </div>

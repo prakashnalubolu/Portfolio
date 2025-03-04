@@ -14,7 +14,7 @@ function Introduction({ isActive, setActiveSection }) {
     <div 
       id="introduction" 
       className={`notebook-cell ${expanded ? 'expanded' : ''}`} 
-      onClick={() => setExpanded(!expanded)} // Clicking the section toggles expansion
+      onClick={() => setExpanded(!expanded)} 
     >
       <div className="cell-header">
         <span>[ {expanded ? " " : "▶"} ]</span> Introduction

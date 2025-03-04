@@ -10,7 +10,7 @@ function Certifications({ isActive }) {
 
   return (
     <Draggable>
-    <div id="certifications" className={`notebook-cell certifications-cell ${expanded ? 'expanded' : ''}`} onClick={() => setExpanded(!expanded)}>
+    <div id="certifications" className={`notebook-cell certifications-cell ${expanded ? 'expanded' : ''}`} onClick={() => setExpanded(!expanded)} >
       <div className="cell-header">
         <span>[ {expanded ? " " : "▶"} ]</span> Certifications
       </div>

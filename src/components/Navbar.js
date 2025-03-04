@@ -18,6 +18,7 @@ function Navbar({ toggleSidebar }) {
         <span className="portfolio-title">Saiprakash Nalubolu</span>
         <span className="star">⭐</span>
         <span className="cloud">☁️</span>
+        <a href="/Saiprakash_Nalubolu_i.pdf" download className="resume-button"> 📄 Resume </a>
       </div>
 
       {/* Right Section - Share & Profile */}

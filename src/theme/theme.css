@@ -765,3 +765,18 @@ body {
     animation-duration: 15s;
   }
   
+  .resume-button {
+    background-color: orange;
+    color: black;
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    margin-left: 10px;
+  }
+  
+  .resume-button:hover {
+    background-color: #e7ab33ab;
+  }
+  
