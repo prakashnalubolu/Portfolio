@@ -3,7 +3,7 @@
 /* General */
 body {
     background-color: #f8f9fa;
-    font-family: 'Arial', sans-serif;
+    font-family: 'JetBrains Mono', sans-serif;
     margin: 0;
     padding: 0;
     color: #333;
@@ -32,7 +32,7 @@ body {
   
   .logo {
     margin-right: 15px;
-    font-family: 'Orbitron', sans-serif; /* Robotic font */
+    font-family: 'JetBrains Mono', sans-serif; /* Robotic font */
     font-size: 1.8rem; /* Slightly larger */
     font-weight: bold;
     color: #ff8c00; /* Orange metallic */
@@ -173,7 +173,7 @@ body {
     max-width: 900px;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
-    font-family: 'Orbitron', sans-serif; /* Robotic font */
+    font-family: 'JetBrains-Mono', sans-serif; /* Robotic font */
 }
   
   /* Hover effect - Show Play Button */
